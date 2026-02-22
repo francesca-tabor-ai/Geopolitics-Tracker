@@ -1,7 +1,0 @@
-{
-  "name": "STRATOSPHERE",
-  "description": "The Operating System for Geopolitics. A data-driven intelligence platform for monitoring national power, global risk, and alliance networks.",
-  "requestFramePermissions": [
-    "geolocation"
-  ]
-}
