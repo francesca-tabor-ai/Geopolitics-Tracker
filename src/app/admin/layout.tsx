@@ -42,9 +42,12 @@ export default async function AdminLayout({
             <Link href="/" className="text-sm text-slate-600 hover:text-slate-900">
               View site
             </Link>
-            <Link href="/api/auth/signout" className="text-sm text-slate-600 hover:text-slate-900">
+            <a
+              href="/api/auth/signout"
+              className="text-sm text-slate-600 hover:text-slate-900"
+            >
               Sign out
-            </Link>
+            </a>
           </div>
         </div>
       </header>

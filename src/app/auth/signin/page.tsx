@@ -1,14 +1,23 @@
 'use client'
 
 import { signIn } from 'next-auth/react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 
 export default function SignInPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState('')
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    if (searchParams.get('registered') === '1') {
+      setSuccess('Account created! Sign in below.')
+    }
+  }, [searchParams])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -24,7 +33,10 @@ export default function SignInPage() {
       setError('Invalid email or password')
       return
     }
-    window.location.href = res?.url ?? '/'
+    const sessionRes = await fetch('/api/auth/session')
+    const session = await sessionRes.json()
+    const role = (session?.user as { role?: string })?.role
+    window.location.href = role === 'ADMIN' ? '/admin' : (res?.url ?? '/')
   }
 
   return (
@@ -62,6 +74,7 @@ export default function SignInPage() {
                 className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-accent-blue/30 focus:border-accent-blue outline-none"
               />
             </div>
+            {success && <p className="text-sm text-green-600">{success}</p>}
             {error && <p className="text-sm text-red-600">{error}</p>}
             <button
               type="submit"

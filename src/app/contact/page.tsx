@@ -11,8 +11,6 @@ const REQUEST_TYPES = [
   { value: 'general', label: 'General Inquiry', subject: 'General Inquiry' },
 ] as const
 
-const CONTACT_EMAIL = 'info@francescatabor.com'
-
 export default function ContactPage() {
   const [requestType, setRequestType] = useState<string>('customer-support')
   const [name, setName] = useState('')
@@ -150,16 +148,9 @@ export default function ContactPage() {
               />
             </div>
 
-            <p className="text-sm text-slate-500">
-              Submissions are sent via email to <strong>{CONTACT_EMAIL}</strong>. Your default mail client will open with a pre-filled message.
-            </p>
-
             {submitted ? (
-              <div className="p-4 rounded-xl bg-slate-100 text-slate-700 text-sm">
-                Your mail client should have opened. If it didn&apos;t, you can email us directly at{' '}
-                <a href={`mailto:${CONTACT_EMAIL}`} className="text-accent-blue hover:underline font-medium">
-                  {CONTACT_EMAIL}
-                </a>
+              <div className="p-4 rounded-xl bg-green-50 text-green-800 text-sm">
+                Thank you! Your message has been sent. We&apos;ll get back to you soon.
               </div>
             ) : null}
 
