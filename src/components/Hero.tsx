@@ -43,13 +43,13 @@ export default function Hero() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-[fade-up_0.5s_ease-out_forwards] opacity-0 [animation-delay:200ms] [animation-fill-mode:forwards]">
           <Link
             href="/pricing"
-            className="px-8 py-4 rounded-xl font-medium bg-slate-900 text-white hover:bg-slate-800 transition-all duration-200 hover:shadow-soft-lg"
+            className="btn-primary px-8 py-4 rounded-xl font-medium bg-slate-900 text-white hover:bg-slate-800 hover:shadow-soft-lg"
           >
             View Plans
           </Link>
           <Link
             href="/case-studies"
-            className="px-8 py-4 rounded-xl font-medium border border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50 transition-all duration-200"
+            className="btn-secondary px-8 py-4 rounded-xl font-medium border border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50"
           >
             See Case Studies
           </Link>

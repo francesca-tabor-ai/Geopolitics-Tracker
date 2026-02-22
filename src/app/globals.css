@@ -78,6 +78,35 @@
     border-color: rgba(148, 163, 184, 0.4);
   }
 
+  /* Micro-interactions */
+  .btn-primary {
+    @apply transition-all duration-200 ease-out;
+    @apply hover:scale-[1.02] active:scale-[0.98];
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply transition-all duration-200 ease-out;
+    @apply hover:scale-[1.01] active:scale-[0.99];
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2;
+  }
+
+  .nav-link {
+    @apply transition-colors duration-200;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:rounded;
+  }
+
+  .footer-link {
+    @apply transition-colors duration-200;
+    @apply hover:text-slate-900;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:rounded;
+  }
+
+  .card-interactive {
+    @apply transition-all duration-200 ease-out;
+    @apply hover:-translate-y-0.5 hover:shadow-soft-lg;
+  }
+
   /* Diagonal sections – visual variety */
   .clip-diagonal {
     clip-path: polygon(0 0, 100% 4%, 100% 100%, 0 96%);

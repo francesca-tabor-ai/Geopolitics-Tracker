@@ -31,7 +31,7 @@ export default function GlassCard({
     <div
       style={style}
       className={`
-        card p-6
+        card card-interactive p-6
         transition-all duration-200
         ${hoverGlow ? accentBorder[glow] : ''}
         ${clipDiagonal ? 'clip-diagonal' : ''}

@@ -23,7 +23,7 @@ export default function Navigation() {
             <Link
               key={item.label}
               href={item.href}
-              className="text-sm text-slate-600 hover:text-slate-900 transition-colors duration-200"
+              className="nav-link text-sm text-slate-600 hover:text-slate-900 px-2 py-1 -mx-2 -my-1 rounded"
             >
               {item.label}
             </Link>
@@ -33,13 +33,13 @@ export default function Navigation() {
         <div className="flex items-center gap-4">
           <Link
             href="#"
-            className="text-sm text-slate-600 hover:text-slate-900 transition-colors duration-200"
+            className="nav-link text-sm text-slate-600 hover:text-slate-900 px-2 py-1 -mx-2 -my-1 rounded"
           >
             Sign in
           </Link>
           <Link
             href="#"
-            className="px-4 py-2 text-sm font-medium rounded-xl bg-slate-900 text-white hover:bg-slate-800 transition-all duration-200"
+            className="btn-primary px-4 py-2 text-sm font-medium rounded-xl bg-slate-900 text-white hover:bg-slate-800 hover:shadow-soft"
           >
             Get Access
           </Link>
