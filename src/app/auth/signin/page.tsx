@@ -1,11 +1,12 @@
 'use client'
 
+import { Suspense } from 'react'
 import { signIn } from 'next-auth/react'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 
-export default function SignInPage() {
+function SignInForm() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -93,5 +94,13 @@ export default function SignInPage() {
         </div>
       </div>
     </main>
+  )
+}
+
+export default function SignInPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <SignInForm />
+    </Suspense>
   )
 }
