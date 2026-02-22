@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String?
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+
+  @@map("users")
+}
+
+model CaseStudy {
+  id        String   @id @default(cuid())
+  company   String
+  industry  String
+  headline  String
+  result    String
+  excerpt   String
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+
+  @@map("case_studies")
+}
+
+model PricingTier {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  monthlyPrice Int?    // null for custom
+  annualPrice  Int?
+  isCustom     Boolean @default(false)
+  popular      Boolean @default(false)
+  cta          String
+  href         String
+  limits       String
+  features     String  // JSON array of feature strings
+  sortOrder    Int     @default(0)
+  createdAt    DateTime @default(now())
+
+  @@map("pricing_tiers")
+}
+
+model ContactSubmission {
+  id          String   @id @default(cuid())
+  requestType String
+  name        String
+  email       String
+  message     String
+  createdAt   DateTime @default(now())
+
+  @@map("contact_submissions")
+}

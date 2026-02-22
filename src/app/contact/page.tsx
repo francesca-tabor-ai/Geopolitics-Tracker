@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
 import Link from 'next/link'
 
 const REQUEST_TYPES = [
@@ -19,21 +20,30 @@ export default function ContactPage() {
   const [message, setMessage] = useState('')
   const [submitted, setSubmitted] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const typeConfig = REQUEST_TYPES.find((t) => t.value === requestType)
-    const subject = typeConfig?.subject ?? 'Contact Request'
-    const body = [
-      `Request type: ${typeConfig?.label ?? requestType}`,
-      `From: ${name} (${email})`,
-      '',
-      '--- Message ---',
-      message,
-    ].join('\n')
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
 
-    const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-    window.location.href = mailtoUrl
-    setSubmitted(true)
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setError('')
+    setLoading(true)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ requestType, name, email, message }),
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        setError(data.error ?? 'Failed to submit')
+        setLoading(false)
+        return
+      }
+      setSubmitted(true)
+    } catch {
+      setError('Failed to submit. Please try again.')
+    }
+    setLoading(false)
   }
 
   return (
@@ -155,30 +165,20 @@ export default function ContactPage() {
 
             <button
               type="submit"
+              disabled={loading}
               className="
                 w-full sm:w-auto px-8 py-4 rounded-xl font-medium
                 bg-slate-900 text-white hover:bg-slate-800
-                transition-all duration-200
+                transition-all duration-200 disabled:opacity-50
               "
             >
-              Send Message
+              {loading ? 'Sending...' : 'Send Message'}
             </button>
           </form>
         </div>
       </section>
 
-      <footer className="py-12 px-6 border-t border-slate-200">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <Link href="/" className="font-semibold text-slate-900">Stratosphere</Link>
-          <div className="flex gap-8 text-sm text-slate-500">
-            <Link href="/pricing" className="hover:text-slate-900 transition-colors">Pricing</Link>
-            <Link href="/case-studies" className="hover:text-slate-900 transition-colors">Case Studies</Link>
-            <Link href="/contact" className="hover:text-slate-900 transition-colors">Contact</Link>
-            <a href="#" className="hover:text-slate-900 transition-colors">Privacy</a>
-            <a href="#" className="hover:text-slate-900 transition-colors">Terms</a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   )
 }

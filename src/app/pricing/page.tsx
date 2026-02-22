@@ -1,4 +1,5 @@
 import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
 import Link from 'next/link'
 
 const tiers = [
@@ -164,18 +165,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <footer className="py-12 px-6 border-t border-slate-200">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <Link href="/" className="font-semibold text-slate-900">Stratosphere</Link>
-          <div className="flex gap-8 text-sm text-slate-500">
-            <Link href="/pricing" className="hover:text-slate-900 transition-colors">Pricing</Link>
-            <Link href="/case-studies" className="hover:text-slate-900 transition-colors">Case Studies</Link>
-            <Link href="/contact" className="hover:text-slate-900 transition-colors">Contact</Link>
-            <a href="#" className="hover:text-slate-900 transition-colors">Privacy</a>
-            <a href="#" className="hover:text-slate-900 transition-colors">Terms</a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   )
 }
