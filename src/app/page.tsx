@@ -121,9 +121,9 @@ export default function Home() {
           <div className="flex gap-8 text-sm text-slate-500">
             <Link href="/pricing" className="hover:text-slate-900 transition-colors">Pricing</Link>
             <Link href="/case-studies" className="hover:text-slate-900 transition-colors">Case Studies</Link>
+            <Link href="/contact" className="hover:text-slate-900 transition-colors">Contact</Link>
             <a href="#" className="hover:text-slate-900 transition-colors">Privacy</a>
             <a href="#" className="hover:text-slate-900 transition-colors">Terms</a>
-            <a href="#" className="hover:text-slate-900 transition-colors">Contact</a>
           </div>
         </div>
       </footer>

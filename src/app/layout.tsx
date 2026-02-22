@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Source_Sans_3 } from 'next/font/google'
 import './globals.css'
+import ChatAssistant from '@/components/ChatAssistant'
 
 const sourceSans = Source_Sans_3({
   subsets: ['latin'],
@@ -23,6 +24,7 @@ export default function RootLayout({
     <html lang="en" className={sourceSans.variable}>
       <body className="font-body min-h-screen">
         {children}
+        <ChatAssistant />
       </body>
     </html>
   )
