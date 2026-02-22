@@ -1,0 +1,147 @@
+import { Country, Signal } from '@/types/geopolitics'
+
+export const countries: Country[] = [
+  {
+    id: 'usa',
+    name: 'United States',
+    isoCode: 'US',
+    region: 'North America',
+    npi: 94.2,
+    stability: 82.5,
+    resilience: 88.1,
+    deterrence: 98.4,
+    metrics: {
+      gdp: 27360,
+      militarySpending: 877,
+      population: 333,
+      energyIndependence: 92,
+      techInnovation: 96,
+    },
+    trends: {
+      npi: [93.5, 93.8, 94.0, 94.2],
+      stability: [85.0, 84.2, 83.1, 82.5],
+    },
+    alliances: ['nato', 'aukus', 'quad'],
+  },
+  {
+    id: 'chn',
+    name: 'China',
+    isoCode: 'CN',
+    region: 'East Asia',
+    npi: 88.7,
+    stability: 78.2,
+    resilience: 84.5,
+    deterrence: 82.1,
+    metrics: {
+      gdp: 17700,
+      militarySpending: 292,
+      population: 1412,
+      energyIndependence: 72,
+      techInnovation: 91,
+    },
+    trends: {
+      npi: [85.2, 86.5, 87.8, 88.7],
+      stability: [80.1, 79.5, 78.8, 78.2],
+    },
+    alliances: ['sco', 'brics'],
+  },
+  {
+    id: 'ind',
+    name: 'India',
+    isoCode: 'IN',
+    region: 'South Asia',
+    npi: 72.4,
+    stability: 74.1,
+    resilience: 71.8,
+    deterrence: 68.5,
+    metrics: {
+      gdp: 3730,
+      militarySpending: 81,
+      population: 1408,
+      energyIndependence: 61,
+      techInnovation: 78,
+    },
+    trends: {
+      npi: [68.5, 69.8, 71.2, 72.4],
+      stability: [73.5, 73.8, 74.0, 74.1],
+    },
+    alliances: ['quad', 'brics', 'sco'],
+  },
+  {
+    id: 'rus',
+    name: 'Russia',
+    isoCode: 'RU',
+    region: 'Eurasia',
+    npi: 64.8,
+    stability: 42.3,
+    resilience: 61.2,
+    deterrence: 89.5,
+    metrics: {
+      gdp: 2240,
+      militarySpending: 86,
+      population: 144,
+      energyIndependence: 145,
+      techInnovation: 62,
+    },
+    trends: {
+      npi: [68.2, 66.5, 65.1, 64.8],
+      stability: [55.0, 48.2, 44.1, 42.3],
+    },
+    alliances: ['csto', 'brics', 'sco'],
+  },
+  {
+    id: 'deu',
+    name: 'Germany',
+    isoCode: 'DE',
+    region: 'Europe',
+    npi: 76.5,
+    stability: 89.2,
+    resilience: 81.4,
+    deterrence: 52.1,
+    metrics: {
+      gdp: 4430,
+      militarySpending: 55,
+      population: 83,
+      energyIndependence: 42,
+      techInnovation: 88,
+    },
+    trends: {
+      npi: [77.1, 76.8, 76.6, 76.5],
+      stability: [91.2, 90.5, 89.8, 89.2],
+    },
+    alliances: ['nato', 'eu'],
+  },
+]
+
+export const signals: Signal[] = [
+  {
+    id: 's1',
+    type: 'military',
+    severity: 'high',
+    title: 'Naval Exercises in South China Sea',
+    description:
+      'Increased activity detected near disputed reefs. Satellite imagery confirms deployment of advanced destroyer class.',
+    timestamp: new Date().toISOString(),
+    countryId: 'chn',
+  },
+  {
+    id: 's2',
+    type: 'economic',
+    severity: 'medium',
+    title: 'Semiconductor Export Restrictions',
+    description:
+      'New regulatory framework proposed for high-end AI chips. Potential impact on global supply chains.',
+    timestamp: new Date(Date.now() - 3600000).toISOString(),
+    countryId: 'usa',
+  },
+  {
+    id: 's3',
+    type: 'political',
+    severity: 'critical',
+    title: 'Energy Infrastructure Cyber-Attack',
+    description:
+      'Large-scale disruption reported in regional power grid. Attribution pending, but signals point to state-sponsored actor.',
+    timestamp: new Date(Date.now() - 7200000).toISOString(),
+    countryId: 'rus',
+  },
+]
